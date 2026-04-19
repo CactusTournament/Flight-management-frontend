@@ -108,7 +108,7 @@ const FlightsPage = () => {
                   onChange={e => setFlightNumber(e.target.value)}
                   required
                 />
-                <button style={{marginLeft: 8}}type="submit">Add Flight</button>
+                  <button type="submit" style={{marginLeft: 8}}>Add Flight</button>
               </form>
             )}
             <table className="table">
