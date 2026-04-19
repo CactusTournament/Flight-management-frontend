@@ -1,0 +1,97 @@
+/* Custom dropdown for Arrivals/Departures airport select */
+.airport-select {
+  padding: 10px 16px;
+  border-radius: 6px;
+  border: 1.5px solid var(--accent, #4fd1c5);
+  background: #232c4a;
+  color: var(--text, #e6e6e6);
+  font-size: 1em;
+  outline: none;
+  transition: border 0.15s, background 0.15s;
+  min-width: 220px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+.airport-select:focus {
+  border: 1.5px solid var(--accent, #7b8cff);
+  background: #202534;
+}
+
+.airport-select option {
+  background: #232c4a;
+  color: var(--text, #e6e6e6);
+}
+.navbar-links {
+  display: flex;
+  gap: 12px;
+  flex: 1 1 auto;
+}
+
+.navbar-search-form {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 12px;
+}
+
+.navbar-search-input {
+  padding: 7px 14px;
+  border-radius: 6px;
+  border: 1.5px solid var(--accent, #4fd1c5);
+  background: #232c4a;
+  color: var(--text, #e6e6e6);
+  font-size: 1em;
+  outline: none;
+  transition: border 0.15s, background 0.15s;
+  min-width: 160px;
+}
+.navbar-search-input:focus {
+  border: 1.5px solid var(--accent, #4fd1c5);
+  background: #202534;
+}
+
+.navbar-auth {
+  display: flex;
+  align-items: center;
+  margin-left: 8px;
+}
+.navbar {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  border-bottom: 1px solid #ccc;
+  background: var(--navbar-bg, #181f36);
+  align-items: center;
+  z-index: 10;
+}
+
+.navbar a {
+  color: var(--text-dark);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.08em;
+  padding: 4px 10px;
+  border-radius: 5px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.navbar a:hover {
+  background:  #7b8cff;
+}
+
+.navbar button {
+  margin-left: 8px;
+  padding: 4px 12px;
+  background: var(--accent, #7b8cff);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.navbar button:hover {
+  background: #5a6bb7;
+}

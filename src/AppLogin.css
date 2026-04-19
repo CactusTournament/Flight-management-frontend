@@ -1,0 +1,94 @@
+/* LoginPage styles */
+
+.login-form-container {
+  width: 100%;
+}
+
+
+.login-form-title {
+  margin-bottom: 32px;
+  color: var(--accent, #7b8cff);
+  font-size: 1.5em;
+  letter-spacing: -0.5px;
+  text-align: center;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto;
+  background: none;
+}
+
+.login-form-label {
+  font-weight: 500;
+  color: var(--text, #e0e6f7);
+  font-size: 1em;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.login-form-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1.5px solid var(--border, #2e3650);
+  background: #232c4a;
+  color: var(--text, #e0e6f7);
+  font-size: 1em;
+  outline: none;
+  transition: border 0.15s;
+  margin-bottom: 2px;
+}
+
+.login-form-input:focus {
+  border: 1.5px solid var(--accent, #7b8cff);
+}
+
+.login-form button[type="submit"] {
+  margin-top: 10px;
+  padding: 10px 0;
+  background: var(--accent, #7b8cff);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.08em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.login-form button[type="submit"]:hover {
+  background: #5a6bb7;
+}
+
+.login-form-error {
+  color: red;
+  margin-top: 8px;
+}
+  /* Error message styling */
+  .login-form .error-message {
+    color: #ff4d4f;
+    font-size: 0.98em;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  button {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+
+  button:hover {
+    background: #5a6bb7;    
+  }
