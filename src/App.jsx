@@ -26,7 +26,9 @@ import SignupPage from "./pages/SignupPage";
 import { AuthProvider } from "./context/AuthContext";
 import { SearchProvider } from "./context/SearchContext";
 
+
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 
 
@@ -68,7 +70,7 @@ const App = () => (
               <Route path="*" element={<Navigate to="/" />} />
             </Routes>
           </div>
-          {/* Footer will be added in a feature branch */}
+          <Footer />
         </div>
       </Router>
     </SearchProvider>
