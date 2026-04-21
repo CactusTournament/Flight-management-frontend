@@ -156,6 +156,12 @@ const FlightsPage = () => {
   const handleEditSave = async (id) => {
     setError("");
     try {
+      const originId = Number(editFlight.originAirportId);
+      const destId = Number(editFlight.destinationAirportId);
+      if (!originId || !destId) {
+        setError("Please select both origin and destination airports.");
+        return;
+      }
       await apiFetch(`http://localhost:8080/flights/${id}`, auth, {
         method: "PUT",
         body: JSON.stringify({
@@ -163,8 +169,8 @@ const FlightsPage = () => {
           aircraft: { id: Number(editFlight.aircraftId) },
           airline: { id: Number(editFlight.airlineId) },
           gate: { id: Number(editFlight.gateId) },
-          originAirport: { id: Number(editFlight.originAirportId) },
-          destinationAirport: { id: Number(editFlight.destinationAirportId) },
+          originAirport: { id: originId },
+          destinationAirport: { id: destId },
           passengers: editFlight.passengerIds.map(id => ({ id: Number(id) })),
           departureTime: editFlight.departureTime ? new Date(editFlight.departureTime).toISOString() : null,
           arrivalTime: editFlight.arrivalTime ? new Date(editFlight.arrivalTime).toISOString() : null
@@ -185,6 +191,7 @@ const FlightsPage = () => {
       setRefresh(r => !r);
     } catch (err) {
       setError("Failed to update flight");
+      console.error("Update flight error:", err);
     }
   };
 
@@ -594,6 +601,18 @@ const FlightsPage = () => {
           />
         </div>
       </div>
+      {/* Cascade Delete Modal rendered at the bottom */}
+      <CascadeDeleteModal
+        show={showDeleteModal}
+        preview={deletePreview}
+        loading={deleteLoading}
+        error={deleteError}
+        success={deleteSuccess}
+        onConfirm={handleConfirmDelete}
+        onCancel={handleCancelDelete}
+        entityName="flight"
+        onClose={handleCancelDelete}
+      />
     </>
   );
 };
