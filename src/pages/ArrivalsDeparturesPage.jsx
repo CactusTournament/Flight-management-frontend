@@ -5,6 +5,8 @@ import { SearchContext } from "../context/SearchContext";
 import { apiFetch } from "../api/apiFetch";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
+
+import ResizableTable from "../components/ResizableTable";
 import { Link } from "react-router-dom";
 
 const ArrivalsDeparturesPage = () => {
@@ -119,25 +121,31 @@ const ArrivalsDeparturesPage = () => {
             {selectedAirport && !loading && (
               <div className="arrivals-departures-results">
                 <h3>Arrivals</h3>
-                <ul className="arrivals-list">
-                  {arrivals.length === 0 ? (
-                    <li className="empty">No arrivals found.</li>
-                  ) : (
-                    arrivals.map(f => (
-                      <li key={f.id} className="flight-item">{f.flightNumber} - {f.status}</li>
-                    ))
-                  )}
-                </ul>
+                <ResizableTable
+                  columns={[
+                    { key: "flightNumber", label: "Flight #" },
+                    { key: "airline", label: "Airline", render: f => f.airline?.name || "" },
+                    { key: "aircraft", label: "Aircraft", render: f => f.aircraft?.type || "" },
+                    { key: "originAirport", label: "Origin", render: f => f.originAirport ? `${f.originAirport.name} (${f.originAirport.code})` : "" },
+                    { key: "arrivalTime", label: "Scheduled Arrival", render: f => f.arrivalTime ? new Date(f.arrivalTime).toLocaleString() : "" },
+                    { key: "gate", label: "Gate", render: f => f.gate?.name || f.gate?.code || f.gate?.number || "-" },
+                    { key: "passengers", label: "Passengers", render: f => f.passengers?.length ?? 0 },
+                  ]}
+                  data={arrivals}
+                />
                 <h3>Departures</h3>
-                <ul className="departures-list">
-                  {departures.length === 0 ? (
-                    <li className="empty">No departures found.</li>
-                  ) : (
-                    departures.map(f => (
-                      <li key={f.id} className="flight-item">{f.flightNumber} - {f.status}</li>
-                    ))
-                  )}
-                </ul>
+                <ResizableTable
+                  columns={[
+                    { key: "flightNumber", label: "Flight #" },
+                    { key: "airline", label: "Airline", render: f => f.airline?.name || "" },
+                    { key: "aircraft", label: "Aircraft", render: f => f.aircraft?.type || "" },
+                    { key: "destinationAirport", label: "Destination", render: f => f.destinationAirport ? `${f.destinationAirport.name} (${f.destinationAirport.code})` : "" },
+                    { key: "departureTime", label: "Scheduled Departure", render: f => f.departureTime ? new Date(f.departureTime).toLocaleString() : "" },
+                    { key: "gate", label: "Gate", render: f => f.gate?.name || f.gate?.code || f.gate?.number || "-" },
+                    { key: "passengers", label: "Passengers", render: f => f.passengers?.length ?? 0 },
+                  ]}
+                  data={departures}
+                />
               </div>
             )}
           </div>

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { apiFetch } from "../api/apiFetch";
 import Sidebar from "../components/Sidebar";
 import { useNavigate } from "react-router-dom";
 import "../AppLogin.css";
@@ -11,8 +12,24 @@ const SignupPage = () => {
     email: "",
     password: "",
     confirmPassword: "",
-    phoneNumber: ""
+    phoneNumber: "",
+    country: ""
   });
+  const [countries, setCountries] = useState([]);
+    // Fetch countries from REST Countries API
+    useEffect(() => {
+      async function fetchCountries() {
+        try {
+          const res = await fetch("https://restcountries.com/v3.1/all?fields=name");
+          const data = await res.json();
+          // Sort alphabetically
+          setCountries(data.map(c => c.name.common).sort((a, b) => a.localeCompare(b)));
+        } catch {
+          setCountries([]);
+        }
+      }
+      fetchCountries();
+    }, []);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const navigate = useNavigate();
@@ -26,8 +43,8 @@ const SignupPage = () => {
     setError("");
     setSuccess("");
     // Basic client-side validation
-    if (!form.firstName || !form.lastName || !form.email || !form.password || !form.confirmPassword) {
-      setError("Please fill in all required fields.");
+    if (!form.firstName || !form.lastName || !form.email || !form.password || !form.confirmPassword || !form.country) {
+      setError("Please fill in all required fields, including country.");
       return;
     }
     if (form.password !== form.confirmPassword) {
@@ -35,10 +52,12 @@ const SignupPage = () => {
       return;
     }
     try {
+      // Attach country as a string
+      const payload = { ...form };
       const res = await fetch("http://localhost:8080/passengers/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form)
+        body: JSON.stringify(payload)
       });
       if (res.ok) {
         setSuccess("Signup successful! You can now log in.");
@@ -88,6 +107,22 @@ const SignupPage = () => {
             <div className="login-form-group">
               <label htmlFor="phoneNumber" className="login-form-label">Phone Number</label>
               <input id="phoneNumber" name="phoneNumber" type="tel" value={form.phoneNumber} onChange={handleChange} className="login-form-input" />
+            </div>
+            <div className="login-form-group">
+              <label htmlFor="country" className="login-form-label">Country</label>
+              <select
+                id="country"
+                name="country"
+                value={form.country}
+                onChange={handleChange}
+                required
+                className="login-form-input"
+              >
+                <option value="">Select Country</option>
+                {countries.map(country => (
+                  <option key={country} value={country}>{country}</option>
+                ))}
+              </select>
             </div>
             <div className="login-form-group login-form-password-group">
               <label htmlFor="password" className="login-form-label">Password</label>
