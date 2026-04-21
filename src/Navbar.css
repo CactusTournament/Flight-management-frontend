@@ -61,23 +61,39 @@
   gap: 16px;
   padding: 16px;
   border-bottom: 1px solid #ccc;
-  background: var(--navbar-bg, #181f36);
+  background: #181f36;
   align-items: center;
-  z-index: 10;
+  z-index: 1000;
 }
 
 .navbar a {
-  color: var(--text-dark);
+  color: #ff7220;
   text-decoration: none;
-  font-weight: 500;
-  font-size: 1.08em;
+  font-weight: 600;
+  font-size: 1.2em;
   padding: 4px 10px;
   border-radius: 5px;
   transition: background 0.15s, color 0.15s;
+  background: none;
 }
 
 .navbar a:hover {
-  background:  #7b8cff;
+  background: #7b8cff;
+  color: #fff;
+}
+.navbar-links a {
+  color: #ff7220;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.2em;
+  padding: 4px 10px;
+  border-radius: 5px;
+  transition: background 0.15s, color 0.15s;
+  background: none;
+}
+.navbar-links a:hover {
+  background: #7b8cff;
+  color: #fff;
 }
 
 .navbar button {

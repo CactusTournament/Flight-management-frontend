@@ -10,22 +10,26 @@ import { AuthContext } from '../context/AuthContext';
 import { SearchContext } from '../context/SearchContext';
 import { BrowserRouter } from 'react-router-dom';
 
+import { act } from '@testing-library/react';
+
 describe('FlightsPage', () => {
-  it('renders flights table for admin', () => {
-    render(
-      <AuthContext.Provider value={{ auth: { user: 'admin', role: 'ADMIN' } }}>
-        <SearchContext.Provider value={{
-          searchResults: [],
-          setSearchResults: jest.fn(),
-          showDropdown: false,
-          setShowDropdown: jest.fn()
-        }}>
-          <BrowserRouter>
-            <FlightsPage />
-          </BrowserRouter>
-        </SearchContext.Provider>
-      </AuthContext.Provider>
-    );
+  it('renders flights table for admin', async () => {
+    await act(async () => {
+      render(
+        <AuthContext.Provider value={{ auth: { user: 'admin', role: 'ADMIN' } }}>
+          <SearchContext.Provider value={{
+            searchResults: [],
+            setSearchResults: jest.fn(),
+            showDropdown: false,
+            setShowDropdown: jest.fn()
+          }}>
+            <BrowserRouter>
+              <FlightsPage />
+            </BrowserRouter>
+          </SearchContext.Provider>
+        </AuthContext.Provider>
+      );
+    });
     // There are multiple elements with /flights/i, check that at least one exists
     const flightsTexts = screen.getAllByText(/flights/i);
     expect(flightsTexts.length).toBeGreaterThan(0);

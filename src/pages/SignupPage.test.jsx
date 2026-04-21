@@ -1,3 +1,11 @@
+// Mock getEnv to avoid import.meta.env issues in tests
+jest.mock('../api/getEnv', () => ({
+  getEnv: () => ({
+    VITE_API_USER: 'testuser',
+    VITE_API_PASS: 'testpass',
+    VITE_API_URL: 'http://localhost:8080',
+  })
+}));
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import SignupPage from '../pages/SignupPage';

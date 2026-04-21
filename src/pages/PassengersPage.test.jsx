@@ -10,22 +10,26 @@ import { AuthContext } from '../context/AuthContext';
 import { SearchContext } from '../context/SearchContext';
 import { BrowserRouter } from 'react-router-dom';
 
+import { act } from '@testing-library/react';
+
 describe('PassengersPage', () => {
-  it('renders passengers table for admin', () => {
-    render(
-      <AuthContext.Provider value={{ auth: { user: 'admin', role: 'ADMIN' } }}>
-        <SearchContext.Provider value={{
-          searchResults: [],
-          setSearchResults: jest.fn(),
-          showDropdown: false,
-          setShowDropdown: jest.fn()
-        }}>
-          <BrowserRouter>
-            <PassengersPage />
-          </BrowserRouter>
-        </SearchContext.Provider>
-      </AuthContext.Provider>
-    );
+  it('renders passengers table for admin', async () => {
+    await act(async () => {
+      render(
+        <AuthContext.Provider value={{ auth: { user: 'admin', role: 'ADMIN' } }}>
+          <SearchContext.Provider value={{
+            searchResults: [],
+            setSearchResults: jest.fn(),
+            showDropdown: false,
+            setShowDropdown: jest.fn()
+          }}>
+            <BrowserRouter>
+              <PassengersPage />
+            </BrowserRouter>
+          </SearchContext.Provider>
+        </AuthContext.Provider>
+      );
+    });
     // There are multiple elements with /passengers/i, check that at least one exists
     const passengersTexts = screen.getAllByText(/passengers/i);
     expect(passengersTexts.length).toBeGreaterThan(0);
