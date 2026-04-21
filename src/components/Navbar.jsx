@@ -135,9 +135,10 @@ function UserProfileLink({ username, auth }) {
     fetchId();
     return () => { mounted = false; };
   }, [username, auth]);
+  const profileLink = id ? `/passenger/${id}` : "/profile";
   return (
     <Link
-      to="/profile"
+      to={profileLink}
       style={{
         fontWeight: 600,
         fontSize: '1.48em',
