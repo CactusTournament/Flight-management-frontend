@@ -1,0 +1,125 @@
+.entity-create-form {
+    height: 20vh;
+    width: 68vw;
+    background: #232c4a;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px 0 rgba(16,26,43,0.10);
+	padding: 24px 24px 16px 24px;
+
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	gap: 12px;
+}
+/* Responsive entity create form */
+.entity-create-form {
+	width: 100%;
+    height: auto;
+	max-width: 68vw;
+	min-width: 0;
+	background: #232c4a;
+	border-radius: 12px;
+	box-shadow: 0 2px 12px 0 rgba(16,26,43,0.10);
+	padding: 24px 24px 16px 24px;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	gap: 12px;
+}
+
+@media (max-width: 600px) {
+	.entity-create-form {
+        height: auto;
+		padding: 12px 4px 12px 4px;
+		gap: 8px;
+		font-size: 0.98em;
+	}
+}
+@media (max-width: 1000px) {
+	.entity-create-form {
+        height: auto;
+		padding: 12px 4px 12px 4px;
+		gap: 8px;
+		font-size: 0.98em;
+	}
+}
+.entity-create-form input,
+.entity-create-form select {
+	background: #181f36;
+	color: var(--text);
+	border: 1.5px solid var(--border);
+	border-radius: 7px;
+	padding: 10px 14px;
+	font-size: var(--font-sm);
+	outline: none;
+	min-width: 140px;
+	transition: border 0.15s, background 0.15s;
+}
+.entity-create-form input,
+.entity-create-form select {
+	background: #181f36;
+	color: var(--text);
+	border: 1.5px solid var(--border);
+	border-radius: 7px;
+	padding: 10px 14px;
+	font-size: var(--font-sm);
+	outline: none;
+	min-width: 120px;
+	max-width: 100%;
+	transition: border 0.15s, background 0.15s;
+	box-sizing: border-box;
+}
+.entity-create-form input:focus,
+.entity-create-form select:focus {
+	border: 1.5px solid var(--accent);
+	background: #232c4a;
+}
+.entity-create-form button[type="submit"] {
+	background: linear-gradient(90deg, var(--accent) 60%, #38b2ac 100%);
+	color: #181c24;
+	border: none;
+	border-radius: 7px;
+	padding: 10px 22px;
+	font-size: var(--font-sm);
+	font-weight: 700;
+	margin-left: 8px;
+	cursor: pointer;
+	box-shadow: 0 2px 8px 0 rgba(79,209,197,0.10);
+	transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+}
+.entity-create-form button[type="submit"] {
+	background: linear-gradient(90deg, var(--accent) 60%, #38b2ac 100%);
+	color: #181c24;
+	border: none;
+	border-radius: 7px;
+	padding: 10px 22px;
+	font-size: var(--font-sm);
+	font-weight: 700;
+	margin-left: 8px;
+	cursor: pointer;
+	box-shadow: 0 2px 8px 0 rgba(79,209,197,0.10);
+	transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+	width: 100%;
+	max-width: 300px;
+}
+.entity-create-form button[type="submit"]:hover,
+.entity-create-form button[type="submit"]:focus {
+	background: linear-gradient(90deg, #38b2ac 0%, var(--accent) 100%);
+	color: #fff;
+	box-shadow: 0 4px 16px 0 rgba(79,209,197,0.18);
+}
+.entity-create-form .error-message {
+	color: #ff4d4f;
+	font-weight: 600;
+	width: 100%;
+	margin-top: 8px;
+	margin-bottom: 0;
+}
+.entity-create-form .error-message {
+	color: #ff4d4f;
+	font-weight: 600;
+	width: 100%;
+	margin-top: 8px;
+	margin-bottom: 0;
+	font-size: 0.98em;
+}
