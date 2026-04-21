@@ -1,0 +1,8 @@
+version: '3.8'
+services:
+  frontend:
+    build: .
+    ports:
+      - "5173:80"
+    # If your frontend Dockerfile builds and serves static files with Nginx, this is correct.
+    # If you use Vite dev server in Docker, change 80 to 5173 on both sides.
