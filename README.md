@@ -1,4 +1,3 @@
-
 # Flight Management Frontend
 
 This is the React frontend for the Flight Management System, providing a user-friendly interface for managing flights, airports, aircraft, passengers, and more. It connects to the Spring Boot REST API backend and supports secure authentication, role-based access, and full CRUD operations.
@@ -19,11 +18,13 @@ This is the React frontend for the Flight Management System, providing a user-fr
 - React Router 7
 - CSS (modular, custom styles)
 
+
 ## Getting Started
 
 ### Prerequisites
 - Node.js 18+ and npm
 - Backend API running (see backend README)
+
 
 ### Development
 
@@ -41,6 +42,22 @@ npm run dev
 
 The app will be available at http://localhost:5173 (or the next available port).
 
+### Automated Testing
+
+This project uses **Jest** and **React Testing Library** for automated tests covering all major components, context providers, and pages.
+
+Run all tests:
+
+```sh
+npm test
+```
+or
+```sh
+npm run test
+```
+
+Test coverage reports are generated in the `coverage/` folder after running tests.
+
 ### Production Build
 
 Build the static site:
@@ -54,6 +71,7 @@ Preview the production build locally:
 ```sh
 npm run preview
 ```
+
 
 ### Docker
 
@@ -69,13 +87,22 @@ Run the container:
 docker run -p 3000:80 flight-frontend
 ```
 
+
 ### Deployment
 
 For AWS deployment, build the frontend and upload the `dist/` folder to S3 for static hosting, or deploy the Docker image to ECS/EC2.
 
+
 ## API Configuration
 
 The frontend expects the backend API to be available at a specific URL. Update API endpoints in `src/api/apiFetch.js` or use environment variables as needed for production.
+
+For testing, API calls are mocked in `src/api/__mocks__/apiFetch.js`.
+## Continuous Integration (CI)
+
+This project uses **GitHub Actions** for continuous integration. All pushes and pull requests to the repository are automatically tested and built. See the `.github/workflows/` directory for configuration.
+
+
 
 ## Manual Test Scenarios
 
@@ -84,6 +111,7 @@ The frontend expects the backend API to be available at a specific URL. Update A
 - Test signup and validation errors
 - Check navigation and "Go Back" button on all pages
 - Verify role-based access (admin vs user)
+
 
 ## Assignment Requirements
 
