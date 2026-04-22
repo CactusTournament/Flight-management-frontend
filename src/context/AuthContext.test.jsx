@@ -3,6 +3,34 @@ import { render, screen, act, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { AuthContext, AuthProvider } from './AuthContext';
 
+// Mock fetch to always succeed and return a user with roles
+beforeAll(() => {
+  global.fetch = jest.fn(() =>
+    Promise.resolve({
+      ok: true,
+      json: () => Promise.resolve({ roles: [{ authority: 'ROLE_ADMIN' }] }),
+    })
+  );
+});
+
+afterAll(() => {
+  global.fetch.mockRestore();
+});
+
+// Mock fetch in the test to simulate authentication and ensure setAuth sets the expected value
+beforeEach(() => {
+  jest.spyOn(global, 'fetch').mockImplementation(() =>
+    Promise.resolve({
+      ok: true,
+      json: () => Promise.resolve({}),
+    })
+  );
+});
+
+afterEach(() => {
+  jest.restoreAllMocks();
+});
+
 // Test component with button to trigger setAuth
 const SetAuthTestComponent = () => {
   const { auth, setAuth } = useContext(AuthContext);

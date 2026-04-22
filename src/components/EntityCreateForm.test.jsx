@@ -10,8 +10,9 @@ describe('EntityCreateForm', () => {
 
   it('renders all fields and submit button', () => {
     render(<EntityCreateForm fields={fields} onSubmit={jest.fn()} />);
-    expect(screen.getByPlaceholderText(/enter name/i)).toBeInTheDocument();
-    expect(screen.getByPlaceholderText(/select type/i)).toBeInTheDocument();
+    expect(screen.getByPlaceholderText(/name/i)).toBeInTheDocument();
+    // Update: check for the visible select option text instead of placeholder
+    expect(screen.getByText('Select type')).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /create/i })).toBeInTheDocument();
   });
 
